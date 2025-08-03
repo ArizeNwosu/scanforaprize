@@ -1,0 +1,70 @@
+
+> scanforaprize@0.1.0 dev
+> next dev
+
+   ▲ Next.js 14.0.0
+   - Local:        http://localhost:3000
+   - Environments: .env.local
+
+ ✓ Ready in 1754ms
+ ○ Compiling /page ...
+ ✓ Compiled /page in 2.2s (427 modules)
+ ✓ Compiled in 140ms (220 modules)
+ ○ Compiling /admin/page ...
+ ✓ Compiled /admin/page in 622ms (418 modules)
+ ✓ Compiled /api/admin/properties/route in 404ms (300 modules)
+ ○ Compiling /claim/page ...
+ ✓ Compiled /claim/page in 819ms (519 modules)
+ ✓ Compiled /api/verify-property/route in 232ms (306 modules)
+ ○ Compiling /api/claim-property/route ...
+ ✓ Compiled /api/claim-property/route in 634ms (356 modules)
+ ⨯ lib/email.ts (3:31) @ createTransporter
+ ⨯ TypeError: nodemailer__WEBPACK_IMPORTED_MODULE_0__.createTransporter is not a function
+    at eval (webpack-internal:///(rsc)/./lib/email.ts:7:61)
+    at (rsc)/./lib/email.ts (/Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:252:1)
+    at __webpack_require__ (/Users/riz/scanforaprize/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/api/claim-property/route.ts:10:68)
+    at (rsc)/./app/api/claim-property/route.ts (/Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:212:1)
+    at __webpack_require__ (/Users/riz/scanforaprize/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fclaim-property%2Froute&page=%2Fapi%2Fclaim-property%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fclaim-property%2Froute.ts&appDir=%2FUsers%2Friz%2Fscanforaprize%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Friz%2Fscanforaprize&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!:14:114)
+    at (rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fclaim-property%2Froute&page=%2Fapi%2Fclaim-property%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fclaim-property%2Froute.ts&appDir=%2FUsers%2Friz%2Fscanforaprize%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Friz%2Fscanforaprize&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! (/Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:202:1)
+    at __webpack_require__ (/Users/riz/scanforaprize/.next/server/webpack-runtime.js:33:42)
+    at __webpack_exec__ (/Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:272:39)
+    at /Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:273:161
+    at __webpack_require__.X (/Users/riz/scanforaprize/.next/server/webpack-runtime.js:163:21)
+    at /Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:273:47
+    at Object.<anonymous> (/Users/riz/scanforaprize/.next/server/app/api/claim-property/route.js:276:3)
+    at Module._compile (node:internal/modules/cjs/loader:1730:14)
+    at Object..js (node:internal/modules/cjs/loader:1895:10)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1487:12)
+    at mod.require (/Users/riz/scanforaprize/node_modules/next/dist/server/require-hook.js:64:28)
+    at require (node:internal/modules/helpers:135:16)
+    at requirePage (/Users/riz/scanforaprize/node_modules/next/dist/server/require.js:109:84)
+    at /Users/riz/scanforaprize/node_modules/next/dist/server/load-components.js:59:84
+    at async loadComponentsImpl (/Users/riz/scanforaprize/node_modules/next/dist/server/load-components.js:59:26)
+    at async DevServer.findPageComponentsImpl (/Users/riz/scanforaprize/node_modules/next/dist/server/next-server.js:666:36) {
+  page: '/api/claim-property'
+}
+[0m [90m 1 |[39m [36mimport[39m nodemailer [36mfrom[39m [32m'nodemailer'[39m[33m;[39m[0m
+[0m [90m 2 |[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mconst[39m transporter [33m=[39m nodemailer[33m.[39mcreateTransporter({[0m
+[0m [90m   |[39m                               [31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m   host[33m:[39m process[33m.[39menv[33m.[39m[33mEMAIL_HOST[39m[33m,[39m[0m
+[0m [90m 5 |[39m   port[33m:[39m parseInt(process[33m.[39menv[33m.[39m[33mEMAIL_PORT[39m [33m||[39m [32m'587'[39m)[33m,[39m[0m
+[0m [90m 6 |[39m   secure[33m:[39m [36mfalse[39m[33m,[39m[0m
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 742ms (729 modules)
+ ✓ Compiled in 1237ms (579 modules)
+   Reload env: .env.local
+ ✓ Compiled in 3.7s (579 modules)
+ ✓ Compiled in 284ms (351 modules)
+ ✓ Compiled in 247ms (351 modules)
+ ✓ Compiled in 303ms (351 modules)
+ ✓ Compiled in 1500ms (579 modules)
+ ✓ Compiled in 801ms (351 modules)
+ ✓ Compiled in 320ms (351 modules)
+[?25h
