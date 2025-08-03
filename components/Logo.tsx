@@ -27,12 +27,12 @@ export default function Logo({
       container: 'space-x-3'
     },
     lg: {
-      icon: 'w-12 h-12',
+      icon: 'w-10 h-10',
       text: 'text-xl',
       container: 'space-x-3'
     },
     xl: {
-      icon: 'w-16 h-16',
+      icon: 'w-12 h-12',
       text: 'text-2xl',
       container: 'space-x-4'
     }
@@ -41,16 +41,17 @@ export default function Logo({
   const sizes = sizeClasses[size];
 
   const IconComponent = () => (
-    <div className={`${sizes.icon} bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg`}>
-      <span className="text-white font-bold" style={{ fontSize: size === 'sm' ? '0.75rem' : size === 'md' ? '1rem' : size === 'lg' ? '1.5rem' : '2rem' }}>
-        S
-      </span>
+    <div className={`${sizes.icon} bg-blue-600 rounded-lg flex items-center justify-center`}>
+      <svg className="w-1/2 h-1/2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5a2 2 0 012-2h4a2 2 0 012 2v0H8v0z" />
+      </svg>
     </div>
   );
 
   const TextComponent = () => (
-    <span className={`${sizes.text} font-bold gradient-text`}>
-      Scan for a Prize
+    <span className={`${sizes.text} font-bold text-gray-900`}>
+      ScanForAPrize
     </span>
   );
 
@@ -94,10 +95,3 @@ export default function Logo({
     </Link>
   );
 }
-
-// Gradient text utility for the logo text
-export const LogoText = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <span className={`bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold ${className}`}>
-    {children}
-  </span>
-);

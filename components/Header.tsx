@@ -19,8 +19,8 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
   if (variant === 'landing') {
     return (
-      <header className="sticky top-0 z-50 glass border-b border-white/20">
-        <div className="container-responsive">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Logo size="md" showText={true} className="hidden sm:flex" />
@@ -28,17 +28,17 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/claim" className="nav-link">
+              <Link href="/claim" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
                 Claim Leads
               </Link>
-              <Link href="/signup" className="nav-link">
+              <Link href="/signup" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
                 Sign Up
               </Link>
-              <Link href="/login" className="nav-link">
+              <Link href="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
                 Log In
               </Link>
               <Link href="/admin" className="btn btn-primary btn-sm">
-                Admin
+                Dashboard
               </Link>
             </nav>
 
@@ -60,19 +60,19 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-white/20 animate-slide-down">
-              <nav className="flex flex-col space-y-3">
-                <Link href="/claim" className="nav-link text-center">
+            <div className="md:hidden py-4 border-t border-gray-200 animate-slide-up">
+              <nav className="flex flex-col space-y-4">
+                <Link href="/claim" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                   Claim Leads
                 </Link>
-                <Link href="/signup" className="nav-link text-center">
+                <Link href="/signup" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                   Sign Up
                 </Link>
-                <Link href="/login" className="nav-link text-center">
+                <Link href="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                   Log In
                 </Link>
-                <Link href="/admin" className="btn btn-primary btn-sm mx-4">
-                  Admin Dashboard
+                <Link href="/admin" className="btn btn-primary btn-base">
+                  Dashboard
                 </Link>
               </nav>
             </div>
@@ -84,36 +84,36 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
   // App variant for authenticated pages
   return (
-    <header className="sticky top-0 z-50 glass border-b border-white/20">
-      <div className="container-responsive">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Logo size="md" href="/admin" showText={true} className="hidden sm:flex" />
           <Logo size="md" variant="icon" href="/admin" className="sm:hidden" />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/admin" className="nav-link">
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/admin" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
               Dashboard
             </Link>
-            <Link href="/admin/leads" className="nav-link">
+            <Link href="/admin/leads" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
               Leads
             </Link>
-            <Link href="/admin/profile" className="nav-link">
+            <Link href="/admin/profile" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
               Profile
             </Link>
             
             {/* User Menu */}
-            <div className="flex items-center space-x-3 pl-4 border-l border-gray-200">
-              <div className="text-sm">
-                <div className="font-medium text-gray-900">{userEmail}</div>
-                <div className="text-gray-500 text-xs">
+            <div className="flex items-center space-x-4 pl-6 border-l border-gray-200">
+              <div className="text-right">
+                <div className="text-sm font-medium text-gray-900">{userEmail}</div>
+                <div className="text-xs text-muted">
                   {isMasterAdmin ? 'Master Admin' : 'Realtor'}
                 </div>
               </div>
               <Link
                 href="/"
-                className="text-gray-400 hover:text-gray-600 transition-colors text-sm"
+                className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
                 title="Sign Out"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,27 +141,24 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/20 animate-slide-down">
-            <nav className="flex flex-col space-y-3">
-              <Link href="/admin" className="nav-link text-center">
+          <div className="md:hidden py-4 border-t border-gray-200 animate-slide-up">
+            <nav className="flex flex-col space-y-4">
+              <Link href="/admin" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                 Dashboard
               </Link>
-              <Link href="/admin/leads" className="nav-link text-center">
+              <Link href="/admin/leads" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                 Leads
               </Link>
-              <Link href="/admin/profile" className="nav-link text-center">
+              <Link href="/admin/profile" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                 Profile
               </Link>
-              <div className="pt-3 border-t border-gray-200 mx-4">
-                <div className="text-center text-sm">
-                  <div className="font-medium text-gray-900">{userEmail}</div>
-                  <div className="text-gray-500 text-xs mb-3">
+              <div className="pt-4 border-t border-gray-200">
+                <div className="text-sm">
+                  <div className="font-medium text-gray-900 mb-1">{userEmail}</div>
+                  <div className="text-xs text-muted mb-4">
                     {isMasterAdmin ? 'Master Admin' : 'Realtor'}
                   </div>
-                  <Link
-                    href="/"
-                    className="btn btn-ghost btn-sm"
-                  >
+                  <Link href="/" className="btn btn-text btn-sm">
                     Sign Out
                   </Link>
                 </div>
