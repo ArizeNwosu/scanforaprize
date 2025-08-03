@@ -106,21 +106,16 @@ export default function SignupPage() {
   return (
     <Layout variant="landing" footerVariant="minimal">
       <div className="min-h-screen bg-gray-50 py-12">
-        <div className="container mx-auto px-6">
+        <div className="container-responsive">
           <div className="max-w-lg mx-auto">
             {/* Header */}
-            <div className="text-center mb-8 animate-fade-in">
-              <div className="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
+            <div className="text-center mb-8">
               <h1 className="heading-lg mb-3">
-                {isClaimFlow ? 'Property Verified Successfully' : 'Create Your Professional Account'}
+                {isClaimFlow ? 'Complete Your Account Setup' : 'Create Your Professional Account'}
               </h1>
-              <p className="text-body text-muted">
+              <p className="text-body">
                 {isClaimFlow 
-                  ? 'Complete your account setup to access your dashboard'
+                  ? 'Your property has been verified. Complete your account to access your dashboard.'
                   : 'Join real estate professionals using our lead capture system'
                 }
               </p>
@@ -128,59 +123,26 @@ export default function SignupPage() {
 
             {/* Success Message for Claims */}
             {isClaimFlow && claimData && (
-              <div className="alert alert-success mb-8 animate-slide-up">
+              <div className="alert alert-success mb-8">
                 <div className="flex items-start">
                   <svg className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <div className="font-medium mb-1">Property Successfully Claimed</div>
+                    <div className="font-medium mb-1">Property Successfully Verified</div>
                     <div className="text-sm">
                       <div><strong>Property:</strong> {claimData.property.address}</div>
-                      <div><strong>Current Leads:</strong> {claimData.property.leadCount} (Free limit: 10 leads)</div>
+                      <div><strong>Current Leads:</strong> {claimData.property.leadCount}</div>
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Benefits for New Users */}
-            {!isClaimFlow && (
-              <div className="card p-6 mb-8 animate-slide-up">
-                <h3 className="heading-sm mb-4">Professional Features Included</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    QR code generation
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Lead management dashboard
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    First 10 leads free
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Email notifications
-                  </div>
-                </div>
-              </div>
-            )}
-
             {/* Form Card */}
-            <div className="card-elevated p-8 animate-slide-up">
+            <div className="card-elevated p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="form-group">
                     <label htmlFor="name" className="form-label">
                       Full Name
@@ -192,7 +154,7 @@ export default function SignupPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="input"
-                      placeholder="Enter your full name"
+                      placeholder="Your full name"
                     />
                   </div>
 
@@ -208,7 +170,7 @@ export default function SignupPage() {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className={`input ${isClaimFlow ? 'bg-gray-50' : ''}`}
                       readOnly={isClaimFlow}
-                      placeholder="Enter your email"
+                      placeholder="your@email.com"
                     />
                     {isClaimFlow && (
                       <div className="form-help">
@@ -218,7 +180,7 @@ export default function SignupPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="form-group">
                     <label htmlFor="companyName" className="form-label">
                       Company/Brokerage
@@ -243,12 +205,12 @@ export default function SignupPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="input"
-                      placeholder="Enter your phone"
+                      placeholder="(555) 123-4567"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="form-group">
                     <label htmlFor="password" className="form-label">
                       Password
@@ -300,20 +262,20 @@ export default function SignupPage() {
                       Creating Account...
                     </span>
                   ) : (
-                    isClaimFlow ? 'Create Account & Access Dashboard' : 'Create Professional Account'
+                    'Create Account'
                   )}
                 </button>
               </form>
 
               {/* Footer */}
               <div className="mt-8 pt-6 border-t border-gray-200 text-center">
-                <p className="text-small text-muted mb-4">
+                <p className="text-small mb-4">
                   Already have an account?{' '}
                   <a href="/login" className="text-blue-600 hover:text-blue-700 font-medium">
                     Sign in here
                   </a>
                 </p>
-                <p className="text-xs text-muted">
+                <p className="text-xs text-gray-400">
                   By creating an account, you agree to our Terms of Service and Privacy Policy.
                 </p>
               </div>

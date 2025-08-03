@@ -12,7 +12,6 @@ export default function ClaimPage() {
     phone: '',
     verificationCode: '',
   });
-  const [claimResult, setClaimResult] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -82,28 +81,40 @@ export default function ClaimPage() {
   return (
     <Layout variant="landing" footerVariant="minimal">
       <div className="min-h-screen bg-gray-50 py-12">
-        <div className="container mx-auto px-6">
+        <div className="container-responsive">
           <div className="max-w-md mx-auto">
             {/* Header */}
-            <div className="text-center mb-8 animate-fade-in">
-              <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-                </svg>
-              </div>
-              <h1 className="heading-lg mb-3">Claim Your Property Leads</h1>
-              <p className="text-body text-muted">
-                Access leads collected from your QR code campaigns
+            <div className="text-center mb-8">
+              <h1 className="heading-lg mb-3">Access Your Property Leads</h1>
+              <p className="text-body">
+                Enter your property code and verification details to access collected leads
               </p>
             </div>
 
+            {/* Progress Indicator */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex items-center">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  step >= 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                }`}>
+                  1
+                </div>
+                <div className={`w-16 h-0.5 ${step >= 2 ? 'bg-blue-600' : 'bg-gray-200'}`}></div>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  step >= 2 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                }`}>
+                  2
+                </div>
+              </div>
+            </div>
+
             {/* Form Card */}
-            <div className="card-elevated p-8 animate-slide-up">
+            <div className="card-elevated p-8">
               {step === 1 && (
                 <div>
                   <div className="mb-6">
                     <h2 className="heading-sm mb-2">Step 1: Verify Property</h2>
-                    <p className="text-small text-muted">
+                    <p className="text-small">
                       Enter the property code from your QR URL
                     </p>
                   </div>
@@ -154,46 +165,48 @@ export default function ClaimPage() {
               {step === 2 && (
                 <div>
                   <div className="mb-6">
-                    <h2 className="heading-sm mb-2">Step 2: Claim Access</h2>
-                    <p className="text-small text-muted">
-                      Complete your information and enter the verification code
+                    <h2 className="heading-sm mb-2">Step 2: Complete Verification</h2>
+                    <p className="text-small">
+                      Enter your contact information and verification code
                     </p>
                   </div>
                   
                   <form onSubmit={handleClaimSubmit} className="space-y-6">
-                    <div className="form-group">
-                      <label htmlFor="name" className="form-label">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="input"
-                        placeholder="Enter your full name"
-                      />
-                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="form-group">
+                        <label htmlFor="name" className="form-label">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="input"
+                          placeholder="Your full name"
+                        />
+                      </div>
 
-                    <div className="form-group">
-                      <label htmlFor="email" className="form-label">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="input"
-                        placeholder="Enter your email"
-                      />
+                      <div className="form-group">
+                        <label htmlFor="email" className="form-label">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="input"
+                          placeholder="your@email.com"
+                        />
+                      </div>
                     </div>
 
                     <div className="form-group">
                       <label htmlFor="phone" className="form-label">
-                        Phone Number <span className="text-muted">(Optional)</span>
+                        Phone Number <span className="text-gray-400">(Optional)</span>
                       </label>
                       <input
                         type="tel"
@@ -201,7 +214,7 @@ export default function ClaimPage() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="input"
-                        placeholder="Enter your phone number"
+                        placeholder="(555) 123-4567"
                       />
                     </div>
 
@@ -241,14 +254,14 @@ export default function ClaimPage() {
                             Verifying...
                           </span>
                         ) : (
-                          'Claim Property'
+                          'Access Leads'
                         )}
                       </button>
 
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="btn btn-text btn-base w-full"
+                        className="btn btn-ghost btn-base w-full"
                       >
                         Back to Step 1
                       </button>
@@ -260,10 +273,10 @@ export default function ClaimPage() {
 
             {/* Help Text */}
             <div className="mt-8 text-center">
-              <p className="text-small text-muted">
-                Need help? Contact us at{' '}
-                <a href="mailto:support@scanforaprize.com" className="text-blue-600 hover:text-blue-700">
-                  support@scanforaprize.com
+              <p className="text-small">
+                Need assistance?{' '}
+                <a href="mailto:support@scanforaprize.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                  Contact Support
                 </a>
               </p>
             </div>

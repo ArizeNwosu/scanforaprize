@@ -46,7 +46,7 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
   if (isSubmitted) {
     return (
       <div className="text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-6">
+        <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-6">
           <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -54,7 +54,7 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
         <h2 className="heading-md text-green-600 mb-3">
           Thank You!
         </h2>
-        <p className="text-body text-muted mb-6">
+        <p className="text-body mb-6">
           Your information has been submitted successfully. You'll receive updates about this property via email.
         </p>
         <div className="alert alert-success">
@@ -62,7 +62,7 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
             <svg className="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            Check your email for property details and next steps
+            Check your email for property details
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className="input"
-          placeholder="Enter your full name"
+          placeholder="Your full name"
         />
       </div>
 
@@ -97,16 +97,16 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="input"
-          placeholder="Enter your email"
+          placeholder="your@email.com"
         />
         <div className="form-help">
-          We'll send property updates and details to this email
+          We'll send property updates to this email
         </div>
       </div>
 
       <div className="form-group">
         <label htmlFor="phone" className="form-label">
-          Phone Number <span className="text-muted">(Optional)</span>
+          Phone Number <span className="text-gray-400">(Optional)</span>
         </label>
         <input
           type="tel"
@@ -114,7 +114,7 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
           className="input"
-          placeholder="Enter your phone number"
+          placeholder="(555) 123-4567"
         />
       </div>
 
@@ -129,7 +129,7 @@ export default function LeadForm({ propertyId }: LeadFormProps) {
             Submitting...
           </span>
         ) : (
-          'Submit Interest'
+          'Get Property Information'
         )}
       </button>
     </form>

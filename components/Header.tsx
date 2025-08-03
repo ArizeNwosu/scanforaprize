@@ -20,7 +20,7 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
   if (variant === 'landing') {
     return (
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="container mx-auto px-6">
+        <div className="container-responsive">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Logo size="md" showText={true} className="hidden sm:flex" />
@@ -29,16 +29,13 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link href="/claim" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                Claim Leads
-              </Link>
-              <Link href="/signup" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                Sign Up
+                Access Leads
               </Link>
               <Link href="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                Log In
+                Sign In
               </Link>
-              <Link href="/admin" className="btn btn-primary btn-sm">
-                Dashboard
+              <Link href="/signup" className="btn btn-primary btn-sm">
+                Get Started
               </Link>
             </nav>
 
@@ -60,19 +57,16 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200 animate-slide-up">
+            <div className="md:hidden py-4 border-t border-gray-200">
               <nav className="flex flex-col space-y-4">
                 <Link href="/claim" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
-                  Claim Leads
-                </Link>
-                <Link href="/signup" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
-                  Sign Up
+                  Access Leads
                 </Link>
                 <Link href="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
-                  Log In
+                  Sign In
                 </Link>
-                <Link href="/admin" className="btn btn-primary btn-base">
-                  Dashboard
+                <Link href="/signup" className="btn btn-primary btn-base">
+                  Get Started
                 </Link>
               </nav>
             </div>
@@ -85,7 +79,7 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
   // App variant for authenticated pages
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <div className="container mx-auto px-6">
+      <div className="container-responsive">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Logo size="md" href="/admin" showText={true} className="hidden sm:flex" />
@@ -107,7 +101,7 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
             <div className="flex items-center space-x-4 pl-6 border-l border-gray-200">
               <div className="text-right">
                 <div className="text-sm font-medium text-gray-900">{userEmail}</div>
-                <div className="text-xs text-muted">
+                <div className="text-xs text-gray-500">
                   {isMasterAdmin ? 'Master Admin' : 'Realtor'}
                 </div>
               </div>
@@ -141,7 +135,7 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 animate-slide-up">
+          <div className="md:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-4">
               <Link href="/admin" className="text-gray-600 hover:text-blue-600 font-medium transition-colors py-2">
                 Dashboard
@@ -155,10 +149,10 @@ export default function Header({ variant = 'landing', userEmail, isMasterAdmin }
               <div className="pt-4 border-t border-gray-200">
                 <div className="text-sm">
                   <div className="font-medium text-gray-900 mb-1">{userEmail}</div>
-                  <div className="text-xs text-muted mb-4">
+                  <div className="text-xs text-gray-500 mb-4">
                     {isMasterAdmin ? 'Master Admin' : 'Realtor'}
                   </div>
-                  <Link href="/" className="btn btn-text btn-sm">
+                  <Link href="/" className="btn btn-ghost btn-sm">
                     Sign Out
                   </Link>
                 </div>
